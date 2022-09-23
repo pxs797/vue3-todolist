@@ -17,7 +17,7 @@
             type="checkbox"
             v-model="item.done"
             :name="item.name"
-            :id="index"
+            :id="index + 'todo'"
             @change="saveTodos"
           >
           <span :style="{ textDecoration: item.done ? 'line-through' : 'none' }">{{ item.name }}</span>
@@ -49,18 +49,25 @@
   </playground>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { getStorage } from '@/utils'
 import { ref, computed } from '@vue/reactivity'
 import { useRouter } from 'vue-router'
 import { removeStorage, setStorage } from '../../utils'
+type Todo = {
+  name: string,
+  done: boolean
+}
+type Options = {
+  name: string
+}
 const username = getStorage('token')
 const title = username.toLocaleUpperCase()
-const todos = ref(JSON.parse(getStorage(username)) || [])
-const todo = ref('')
-const allDone = ref(false)
-const activeOptionIndex = ref(0)
-const options = ref([
+const todos = ref<Todo[]>(JSON.parse(getStorage(username)) || [])
+const todo = ref<string>('')
+const allDone = ref<boolean>(false)
+const activeOptionIndex = ref<number>(0)
+const options = ref<Options[]>([
   { name: 'all' },
   { name: 'active' },
   { name: 'completed' }
@@ -99,7 +106,7 @@ function clearTodos() {
   todos.value = []
   saveTodos()
 }
-function delTodo(index) {
+function delTodo(index:number) {
   _todos.value.splice(index, 1)
   saveTodos()
 }

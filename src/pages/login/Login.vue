@@ -14,7 +14,7 @@ import { useRouter } from 'vue-router'
 import { getStorage, setStorage } from '@/utils'
 const router = useRouter()
 
-const username = ref('')
+const username = ref<string>('')
 
 function toPath(): void {
   if (!username.value) {
