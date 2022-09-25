@@ -50,7 +50,7 @@
 </template>
 
 <script setup lang="ts">
-import { getStorage } from '@/utils'
+import { getStorage } from '../../utils'
 import { ref, computed } from '@vue/reactivity'
 import { useRouter } from 'vue-router'
 import { removeStorage, setStorage } from '../../utils'
@@ -61,9 +61,10 @@ type Todo = {
 type Options = {
   name: string
 }
-const username = getStorage('token')
+const username:string = getStorage('token') || ''
 const title = username.toLocaleUpperCase()
-const todos = ref<Todo[]>(JSON.parse(getStorage(username)) || [])
+const stroageTodos:any = getStorage(username)
+const todos = ref<Todo[]>(JSON.parse(stroageTodos) || [])
 const todo = ref<string>('')
 const allDone = ref<boolean>(false)
 const activeOptionIndex = ref<number>(0)

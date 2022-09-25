@@ -11,7 +11,7 @@
 <script setup lang="ts">
 import { ref } from '@vue/reactivity'
 import { useRouter } from 'vue-router'
-import { getStorage, setStorage } from '@/utils'
+import { getStorage, setStorage } from '../../utils'
 const router = useRouter()
 
 const username = ref<string>('')
