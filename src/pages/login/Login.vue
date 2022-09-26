@@ -2,8 +2,8 @@
   <playground>
     <div class="login shadow flex area">
       <h3 class="title">Your name</h3>
-      <input type="text" class="input" v-model="username">
-      <button class="button shadow" @click="toPath">submit</button>
+      <input type="text" class="input" v-model="username" placeholder="enter to confirm" @keydown.enter="toPath">
+      <!-- <button class="button shadow" @click="toPath">submit</button> -->
     </div>
   </playground>
 </template>

@@ -8,7 +8,7 @@
         v-model="todo"
         class="input"
         @keydown.enter="addTodo"
-        placeholder="key enter to add todo"
+        placeholder="enter to confirm"
       >
       <ul class="todos">
         <li class="todo flex" v-for="(item, index) in _todos" :key="index">
@@ -36,7 +36,7 @@
             v-for="(item, index) in options"
             :key="index"
             :style="{
-              border: activeOptionIndex === index ? '2px solid #eee' : 'none'
+              border: activeOptionIndex === index ? '2px solid #fff' : 'none'
             }"
             @click="activeOptionIndex = index"
           >
@@ -159,6 +159,7 @@ function logout() {
   width: 100%;
   height: 50px;
   border-bottom: 1px solid #fff;
+  color: #fff;
 }
 .del {
   margin-left: auto;
@@ -189,6 +190,7 @@ function logout() {
   justify-content: flex-start;
   width: 70%;
   height: 50px;
+  color: #fff;
 }
 .options li {
   display: block;
